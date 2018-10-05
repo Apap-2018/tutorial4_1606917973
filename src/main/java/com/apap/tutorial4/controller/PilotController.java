@@ -38,7 +38,7 @@ public class PilotController {
 		return "add";
 	}
 
-	@RequestMapping(value = "/pilot/view")
+	@RequestMapping(value = "/pilot/view", method = RequestMethod.GET)
 	private String view(@RequestParam("licenseNumber") String licenseNumber, Model model) {
 		PilotModel pilot = pilotService.getPilotDetailByLicenseNumber(licenseNumber);
 		model.addAttribute("pilot", pilot);
@@ -46,7 +46,7 @@ public class PilotController {
 		return "view-pilot";
 	}
 
-	@RequestMapping(value = "/pilot/delete")
+	@RequestMapping(value = "/pilot/delete", method = RequestMethod.GET)
 	public String delete(@RequestParam("licenseNumber") String licenseNumber, Model model) {
 		PilotModel deletedPilot = pilotService.deletePilot(licenseNumber);
 		model.addAttribute("pilot", deletedPilot);

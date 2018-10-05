@@ -1,22 +1,43 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-	<title>Home</title>
-</head>
+	<head>
+		<title>Home</title>
+	</head>
 
-<body>
-	<h2>Hello!</h2>
-	
-	<h3>Tambah Pilot</h3>
-	<td><a th:href="@{/pilot/add}">Tambah</a></td>
-	
-	<h3>Cari Pilot berdasarkan Nomor Licensi</h3>
-	<form th:action="@{/pilot/view}" method="GET">
-		License Number: <br>
-		<input type="text" name="licenseNumber"/>
-		<button type="submit">Cari</button>
-	</form>
-</body>
+	<body>
+		<h2>Hello!</h2>
+
+		<h3>Tambah Pilot</h3>
+		<td><a th:href="@{/pilot/add}">Tambah</a></td>
+
+		<h3>Cari Pilot berdasarkan Nomor Licensi</h3>
+		<form th:action="@{/pilot/view}" method="GET">
+			License Number: <br>
+			<input type="text" name="licenseNumber"/>
+			<button type="submit">Cari</button>
+		</form>
+
+		<h3>Cari Flight berdasarkan Nomor Flight</h3>
+		<form th:action="@{/flight/view}" method="GET">
+			License Number: <br>
+			<input type="text" name="flightNumber"/>
+			<button type="submit">Cari</button>
+		</form>
+
+		<h3>Delete Pilot berdasarkan Nomor Licensi</h3>
+		<form th:action="@{/pilot/delete}" method="GET">
+			License Number: <br>
+			<input type="text" name="licenseNumber"/>
+			<button type="submit">Delete</button>
+		</form>
+
+		<h3>Delete Flight berdasarkan Nomor Flight</h3>
+		<form th:action="@{/flight/delete}" method="GET">
+			Flight Number: <br>
+			<input type="text" name="flightNumber"/>
+			<button type="submit">Delete</button>
+		</form>
+	</body>
 
 </html>

@@ -41,7 +41,7 @@ public class FlightController {
 		return "add";
 	}
 
-	@RequestMapping(value = "/flight/view")
+	@RequestMapping(value = "/flight/view", method = RequestMethod.GET)
 	private String view(@RequestParam("flightNumber") String flightNumber, Model model) {
 		FlightModel flight = flightService.getFlightDetailByFlightNumber(flightNumber);
 		model.addAttribute("flight", flight);
@@ -49,7 +49,7 @@ public class FlightController {
 		return "view-flight";
 	}
 
-	@RequestMapping(value = "/flight/delete")
+	@RequestMapping(value = "/flight/delete", method = RequestMethod.GET)
 	public String delete(@RequestParam("flightNumber") String flightNumber, Model model) {
 		FlightModel deletedFlight = flightService.deleteFlight(flightNumber);
 		model.addAttribute("flight", deletedFlight);
