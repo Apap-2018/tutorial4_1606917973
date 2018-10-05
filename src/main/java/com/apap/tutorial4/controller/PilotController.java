@@ -20,44 +20,44 @@ public class PilotController {
 
 	@Autowired
 	private PilotService pilotService;
-	
+
 	@RequestMapping("/")
 	private String home() {
 		return "home";
 	}
-	
+
 	@RequestMapping(value = "/pilot/add", method = RequestMethod.GET)
 	private String add(Model model) {
 		model.addAttribute("pilot", new PilotModel());
 		return "addPilot";
 	}
-	
+
 	@RequestMapping(value = "/pilot/add", method = RequestMethod.POST)
 	private String addPilotSubmit(@ModelAttribute PilotModel pilot) {
 		pilotService.addPilot(pilot);
 		return "add";
 	}
-	
-	@RequestMapping(value = "/pilot/view", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/pilot/view")
 	private String view(@RequestParam("licenseNumber") String licenseNumber, Model model) {
 		PilotModel pilot = pilotService.getPilotDetailByLicenseNumber(licenseNumber);
 		model.addAttribute("pilot", pilot);
 		model.addAttribute("pilotFlight", pilot.getPilotFlight());
 		return "view-pilot";
 	}
-	
-	@RequestMapping(value = "/pilot/delete", method = RequestMethod.POST)
+
+	@RequestMapping(value = "/pilot/delete")
 	public String delete(@RequestParam("licenseNumber") String licenseNumber, Model model) {
 		PilotModel deletedPilot = pilotService.deletePilot(licenseNumber);
 		model.addAttribute("pilot", deletedPilot);
 		return "delete-pilot";
 	}
-	
-	@RequestMapping(value = "/pilot/update", method = RequestMethod.POST)
+
+	@RequestMapping(value = "/pilot/update")
 	public String update(@RequestParam("licenseNumber") String licenseNumber, @RequestParam("name") String name, @RequestParam("flyHour") String flyHour, Model model) {
 		PilotModel updatedPilot = pilotService.updatePilot(licenseNumber, name, flyHour);
 		model.addAttribute("pilot", updatedPilot);
 		return "update-pilot";
 	}
-	
+
 }
